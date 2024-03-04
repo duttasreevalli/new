@@ -37,7 +37,7 @@ pipeline {
 	            steps {
 	                echo "Building package with ${WORKSPACE}"
 	                UiPathPack (
-	                      outputPath: "C:\\Users\\Relanto\\Documents\\UiPath\\new\\Output\\${env.BUILD_NUMBER}",
+	                      outputPath: "C:\\Users\\Relanto\\Documents\\UiPath\\new\\${env.BUILD_NUMBER}",
 						  outputType: 'Tests',
 	                      projectJsonPath: "project.json",
 	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
@@ -51,7 +51,7 @@ pipeline {
 	            steps {
 	                echo "Deploying ${BRANCH_NAME} to orchestrator"
 	                UiPathDeploy (
-	                packagePath: "C:\\Users\\Relanto\\Documents\\UiPath\\new\\Output\\${env.BUILD_NUMBER}",
+	                packagePath: "C:\\Users\\Relanto\\Documents\\UiPath\\new\\${env.BUILD_NUMBER}",
 	                orchestratorAddress: "${UIPATH_ORCH_URL}",
 	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
 	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
